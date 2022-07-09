@@ -1,0 +1,10 @@
+const a = "Prajwal";
+const b = "Vilas";
+const c = "Urkude";
+const d = "Ayush";
+const e = "Sunita";
+export default c;
+export {a};
+export {b};
+export {d};
+export {e};

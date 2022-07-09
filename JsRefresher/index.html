@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // "use strict";
+        
+        let s = 45;
+        let a = "This is me"
+        const p = 9
+        console.log(s + " " + a + 9);
+        //* DataTypes in JS
+        /**
+         * Numbers
+         * Objects
+         * Boolean
+         * string
+         * Undefined
+         * null
+        */
+        function Praj(){
+            console.log("This is Prajwal");
+        }
+        //! Object Can consist of functions
+        let obj = {
+            r : 2,
+            p : 9,
+            g : 8/2,
+            funct : function myfunct(number){
+                console.log("The number is " + number); // it will written a string
+            }
+        }
+        document.addEventListener("click", function click(){
+            console.log("This is clicked");
+            alert("clicked");
+        })
+        document.addEventListener("click", function click(){
+            console.log("This is clicked");
+            // alert("clicked");
+            let conf = confirm("Are you sure ?");
+            console.log(conf);
+        })
+        function myFunc1(number){
+            console.log("The number is this " + this);
+        }
+        myFunc1(1);
+        let myFunct2 = (number) =>{
+            console.log("This number is " + this);
+        }
+        myFunct2(2);
+        let obj2 = {
+            myfunct3 : (number) =>{
+                console.log("This is a number" + this);
+            }
+        }
+        obj2.myfunct3(2);
+        //* Call back
+        setTimeout(() => {
+            console.log("This is me using call-back function");
+        }, 3000);
+        console.log("I am excuted earlier than the time-out function");
+    </script>
+</head>
+<body>
+    <p>I am Learning Js</p>
+</body>
+</html>
