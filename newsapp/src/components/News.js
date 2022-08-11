@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import NewsItem from "../NewsItem";
 import Loading from "./Loading";
 import PropTypes from "prop-types";
-
+// import {Date} from 'date-fns'
 export class News extends Component {
   static defaultProps = {
     country: "in",
     pageSize: 10,
     category: "general",
+
   };
   static propTypes = {
     country: PropTypes.string,
@@ -95,6 +96,9 @@ export class News extends Component {
                       element.urlToImage ? element.urlToImage : "imageURL"
                     }
                     newsURL={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
+                    source = {element.source.name}
                   />
                 </div>
               );
