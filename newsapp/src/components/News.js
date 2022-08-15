@@ -14,14 +14,19 @@ export class News extends Component {
     pageSize: PropTypes.number,
     category: PropTypes.string,
   };
-  constructor() {
-    super();
+  //* To Capitalize the first letter
+  capitalize = (string ) =>{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  constructor(props) {
+    super(props);
     // console.log("Hello! This is the constructor from News Component");
     this.state = {
       articles: [],
       loading: false,
       page: 1,
     };
+    document.title = `${this.capitalize(this.props.category)} - News-Lit`;
   }
   async updateNews() {
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1bc9f41e68fc42a2953544c907d0d459&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -103,7 +108,7 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h2 className="text-center" style={{ margin: "30px" }}>
-          News Lit ~ Top HeadLines
+          News Lit ~ Top {this.capitalize(this.props.category)} HeadLines
         </h2>
         {this.state.loading && <Loading />}
         <div className="row">
@@ -128,7 +133,7 @@ export class News extends Component {
         </div>
         <div className="container d-flex justify-content-between">
           <button
-            disabled={!this.state.page}
+            disabled={this.state.page <= 1}
             type="button"
             className="btn btn-dark"
             onClick={this.handlePrevClick}
