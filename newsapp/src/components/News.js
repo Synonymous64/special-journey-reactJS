@@ -3,8 +3,6 @@ import NewsItem from "../NewsItem";
 import Loading from "./Loading";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-
-// import {Date} from 'date-fns'
 export class News extends Component {
   static defaultProps = {
     country: "in",
