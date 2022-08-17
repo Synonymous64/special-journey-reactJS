@@ -30,16 +30,22 @@ export class News extends Component {
     document.title = `${this.capitalize(this.props.category)} - News-Lit`;
   }
   async updateNews() {
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=1bc9f41e68fc42a2953544c907d0d459&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parsedData = await data.json();
     // console.log(parsedData);
+    this.props.setProgress(50);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
+      
     });
+    this.props.setProgress(70);
+    this.props.setProgress(100);
   }
   componentDidMount() {
     // console.log("cdn");
@@ -120,7 +126,7 @@ export class News extends Component {
     console.log("render");
 
     return (
-      <>
+      <div className="container">
         <h2 className="text-center" style={{ margin: "30px" }}>
           News Lit ~ Top {this.capitalize(this.props.category)} HeadLines
         </h2>
@@ -175,7 +181,7 @@ export class News extends Component {
             Next &rarr;
           </button>
         </div> */}
-      </>
+      </div>
     );
   }
 }
