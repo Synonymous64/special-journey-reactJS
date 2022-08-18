@@ -8,12 +8,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 export default class App extends Component {
   pageSize = 5;
+  apiKey = process.env.REACT_APP_NEWS_API;
   state = {
     progress: 0,
-  }
-  setProgress = (progress) =>{
-    this.setState({progress: progress})
-  }
+  };
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
   //* Class data member
   a = "by Prajwal :)";
   render() {
@@ -32,11 +33,13 @@ export default class App extends Component {
               exact
               path="/"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="general"
                   pageSize={10}
                   country="in"
                   category="general"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -44,11 +47,13 @@ export default class App extends Component {
               exact
               path="/entertainment"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="entertainment"
                   pageSize={10}
                   country="in"
                   category="entertainment"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -56,11 +61,13 @@ export default class App extends Component {
               exact
               path="/business"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="business"
                   pageSize={10}
                   country="in"
                   category="business"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -68,11 +75,13 @@ export default class App extends Component {
               exact
               path="/health"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="health"
                   pageSize={10}
                   country="in"
                   category="health"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -80,11 +89,13 @@ export default class App extends Component {
               exact
               path="/science"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="science"
                   pageSize={10}
                   country="in"
                   category="science"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -92,11 +103,13 @@ export default class App extends Component {
               exact
               path="/sports"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="sports"
                   pageSize={10}
                   country="in"
                   category="sports"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
@@ -104,11 +117,13 @@ export default class App extends Component {
               exact
               path="/technology"
               element={
-                <News setProgress={this.setProgress} 
+                <News
+                  setProgress={this.setProgress}
                   key="technology"
                   pageSize={10}
                   country="in"
                   category="technology"
+                  apiKey={this.apiKey}
                 />
               }
             ></Route>
