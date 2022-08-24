@@ -35,7 +35,7 @@ const News = (props) => {
       document.title = `${capitalize(props.category)} - News-Lit`;
       updateNews();
     };
-  });
+  }, []);
   // handlePrevClick = async () => {
   //   // console.log("Prev");
   //   // let url = `https://newsapi.org/v2/top-headlines?country=${
