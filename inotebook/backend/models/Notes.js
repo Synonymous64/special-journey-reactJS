@@ -19,6 +19,5 @@ const NotesSchema = new Schema({
     required: true,
     default: Date.now,
   },
-  bio: String,
 });
-module.exports = mongoose.Model("notes", NotesSchema);
+module.exports = mongoose.model("notes", NotesSchema);

@@ -20,6 +20,9 @@ const UserSchema = new Schema({
     required: true,
     default: Date.now,
   },
-  bio: String,
+  bio:{
+    type: String,
+    required: false,
+  },
 });
-module.exports = mongoose.Model('user', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
