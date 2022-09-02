@@ -11,7 +11,8 @@ router.post(
     body("password", "enter a valid password").isLength({ min: 5 }),
     body("bio", "enter a valid bio").isLength({ max: 120 }),
   ],
-  (req, res) => {
+  async (req, res) => {
+    //* if there are errors, return bad request and the errors
     // console.log(req.body);
     // const user = User(req.body);
     // user.save();
@@ -19,20 +20,25 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      bio: req.body.bio,
-    })
-      .then((user) => res.json(user))
-      .catch((err) => {
-        console.log(err);
-        res.json({
-          error: "please enter the unique email",
-          message: err.message,
-        });
+    //* check whether user with the same email exist already
+    try {
+      let user = await User.findOne({ email: req.body.email });
+      if (user) {
+        return res
+          .status(400)
+          .json({ error: "Sorry :/ A user with this email already exists" });
+      }
+      user = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        bio: req.body.bio,
       });
+      res.json(user);
+    } catch (error) {
+      console.log(error.message);
+      res.status(500).json({ error: "Something went wrong :/ " });
+    }
   }
 );
 module.exports = router;
