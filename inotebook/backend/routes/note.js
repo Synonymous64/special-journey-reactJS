@@ -70,7 +70,29 @@ router.patch("/updatenote/:id", fetchuser, async (req, res) => {
   if (note.user.toString() !== req.user.id) {
     return res.status(401).send("Not Allowed :/");
   }
-  note = await Note.findByIdAndUpdate(req.params.id, {$set : newNote}, {new : true})
-  res.json({note});
+  note = await Note.findByIdAndUpdate(
+    req.params.id,
+    { $set: newNote },
+    { new: true }
+  );
+  res.json({ note });
+});
+//! Route 3 -> Add a new Note using DELETE: "/api/notes/deletenote". Login Required
+router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+  try {
+    //* Find the note to be updated and delete it
+    let note = await Note.findById(req.params.id); //! this will be the id which you want to update
+    if (!note) return res.status(404).send({ error: "not found :/" });
+
+    //* Allow deletion only if user owns this Note
+    if (note.user.toString() !== req.user.id) {
+      return res.status(401).send("Not Allowed :/");
+    }
+    note = await Note.findByIdAndDelete(req.params.id);
+    res.json({ Sucess: "Note has been deleted", note: note });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send("Internal server error :/");
+  }
 });
 module.exports = router;
