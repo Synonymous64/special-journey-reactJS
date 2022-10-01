@@ -13,7 +13,7 @@ const NoteState = (props) => {
     },
     {
       _id: "631f53f1c5b7d30b86ec1f61",
-      user: "6318badca7adcf11712e8de9",
+      user: "6318badca7adcf11712e8de91",
       title: "New Note",
       description: "This is really working so well",
       tag: "General",
@@ -21,8 +21,8 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "631f53f1c5b7d30b86ec1f61",
-      user: "6318badca7adcf11712e8de9",
+      _id: "631f53f1c5b7d30b86ec1f62",
+      user: "6318badca7adcf11712e8de91",
       title: "New Note",
       description: "This is really working so well",
       tag: "General",
@@ -30,8 +30,8 @@ const NoteState = (props) => {
       __v: 0,
     },
     {
-      _id: "631f53f1c5b7d30b86ec1f61",
-      user: "6318badca7adcf11712e8de9",
+      _id: "631f53f1c5b7d30b86ec1f63",
+      user: "6318badca7adcf11712e8de91",
       title: "New Note",
       description: "This is really working so well",
       tag: "General",
