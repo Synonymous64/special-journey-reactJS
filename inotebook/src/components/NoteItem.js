@@ -12,11 +12,7 @@ const NoteItem = (props) => {
             <i className="fa-solid fa-pen-to-square mx-2"></i>
           </div>
           <p className="card-text">
-            {note.description} Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Quam maxime optio voluptatibus voluptas
-            accusantium debitis vel dolor itaque alias quod, nesciunt eligendi
-            rerum veniam quaerat! Vel numquam quas consequuntur ea possimus
-            pariatur quis debitis facere?
+            {note.description}
           </p>
         </div>
       </div>

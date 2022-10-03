@@ -52,9 +52,29 @@ const NoteState = (props) => {
   //     });
   //   }, 1000);
   // };
-  const [notes, setNotes] = useState(notesInitial)
+  const [notes, setNotes] = useState(notesInitial);
+  //* Add a note
+  const addNote = (title, description, tag) => {
+    console.log("adding a new Note");
+    let note = {
+      _id: "631f53f1c5b7d30b86ec1f63",
+      user: "6318badca7adcf11712e8de91",
+      title: title,
+      description: description,
+      tag: "General",
+      date: "2022-09-12T15:44:49.056Z",
+      __v: 0,
+    };
+    setNotes(notes.concat(note));
+  };
+  //* Delete a note
+  const deleteNote = () => {};
+  //* Edit a note
+  const editNote = () => {};
   return (
-    <NoteContext.Provider value={{notes, setNotes}}>{props.children}</NoteContext.Provider>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote }}>
+      {props.children}
+    </NoteContext.Provider>
   );
 };
 export default NoteState;
