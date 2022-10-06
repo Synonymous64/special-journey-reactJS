@@ -43,6 +43,16 @@ const AddNote = () => {
             onChange={onChange}
           ></textarea>
         </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">Tag</label>
+          <input
+            type="text"
+            className="form-control"
+            id="tag"
+            name="tag"
+            onChange={onChange}
+          ></input>
+        </div>
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
           add a note
         </button>
