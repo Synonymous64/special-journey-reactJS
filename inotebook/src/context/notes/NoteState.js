@@ -46,7 +46,8 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
-    const json = response.json(); // parses JSON response into native JavaScript objects
+    const json = await response.json(); // parses JSON response into native JavaScript objects
+    console.log(json);
 
     console.log("adding a new Note");
     let note = {
@@ -84,7 +85,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     //* API Call
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "auth-token":
@@ -93,17 +94,21 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }), // body data type must match "Content-Type" header
     });
-    const json = response.json(); // parses JSON response into native JavaScript objects
+    const json = await response.json(); // parses JSON response into native JavaScript objects
+    console.log(json);
 
+    let newNotes = JSON.parse(JSON.stringify(notes));
     //* Logic to edit in client
-    for (let i = 0; i < notes.length; ++i) {
-      let element = notes[i];
+    for (let i = 0; i < newNotes.length; ++i) {
+      let element = newNotes[i];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[i].title = title;
+        newNotes[i].description = description;
+        newNotes[i].tag = tag;
+        break;
       }
     }
+    setNotes(newNotes);
   };
   return (
     <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>

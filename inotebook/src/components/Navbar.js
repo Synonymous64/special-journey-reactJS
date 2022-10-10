@@ -6,7 +6,7 @@ const Navbar = () => {
     // console.log(location.pathname);
   }, [location]);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-lg-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           iNotebook
@@ -31,7 +31,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`} to="/about">
-                about
+                About
               </Link>
             </li>
           </ul>
