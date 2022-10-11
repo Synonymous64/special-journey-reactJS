@@ -7,11 +7,12 @@ const AddNote = () => {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" })
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -31,6 +32,9 @@ const AddNote = () => {
             placeholder="add a title"
             onChange={onChange}
             name="title"
+            minLength={5}
+            required
+            value={note.title}
           />
         </div>
         <div className="mb-3">
@@ -41,6 +45,9 @@ const AddNote = () => {
             name="description"
             rows="3"
             onChange={onChange}
+            minLength={5}
+            required
+            value={note.description}
           ></textarea>
         </div>
         <div className="mb-3">
@@ -51,9 +58,10 @@ const AddNote = () => {
             id="tag"
             name="tag"
             onChange={onChange}
+            value={note.tag}
           ></input>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+        <button type="submit" disabled={note.title.length < 5 || note.description.length < 5} className="btn btn-primary" onClick={handleClick}>
           add a note
         </button>
       </form>
