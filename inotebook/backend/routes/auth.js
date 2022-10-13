@@ -17,13 +17,14 @@ router.post(
     body("bio", "enter a valid bio").isLength({ max: 120 }),
   ],
   async (req, res) => {
+    let success = false;
     //* if there are errors, return bad request and the errors
     // console.log(req.body);
     // const user = User(req.body);
     // user.save();
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).send({ errors: errors.array() });
+      return res.status(400).send({ success, errors: errors.array() });
     }
     //* check whether user with the same email exist already
     try {
@@ -31,7 +32,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry :/ A user with this email already exists" });
+          .json({ success, error: "Sorry :/ A user with this email already exists" });
       }
       const salt = await bcrypt.genSalt(10);
       const secPass = await bcrypt.hash(req.body.password, salt);
@@ -50,10 +51,11 @@ router.post(
       const authToken = jwt.sign(data, JWT_SECRET);
       // console.log(authToken);
       // res.json(user);
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken });
     } catch (error) {
       console.log(error.message);
-      res.status(500).send({ error: "Internal Server Error :/" });
+      res.status(500).send({ success, error: "Internal Server Error :/" });
     }
   }
 );
