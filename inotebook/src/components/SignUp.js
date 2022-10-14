@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-const SignUp = () => {
+const SignUp = (props) => {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cPassword: "", bio: "" });
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -20,7 +20,8 @@ const SignUp = () => {
       //! Save the auth-token and then redirect 
       localStorage.setItem('token', json.authToken);
       navigate("/login");
-    } else alert('Invalid Credentials')
+      props.showAlert(" Account Created Successfully", "success")
+    } else props.showAlert(' Invalid Credentials', "danger");
   }
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -52,7 +53,7 @@ const SignUp = () => {
         </div>
         <div className="mb-3">
           <label htmlFor="cPassword" className="form-label">Confirm Password</label>
-          <input type="password" className="form-control" name="cPassword" id="cPassword" onChange={onChange} minLength={5} required/>
+          <input type="password" className="form-control" name="cPassword" id="cPassword" onChange={onChange} minLength={5} required />
         </div>
         <div className="mb-3">
           <label htmlFor="exampleFormControlTextarea1" className="form-label">Tell us about yourself</label>
