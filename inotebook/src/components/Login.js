@@ -17,15 +17,16 @@ const Login = (props) => {
         if (json.success) {
             //! Save the auth-token and then redirect 
             localStorage.setItem('token', json.authToken);
-            navigate("/");
             props.showAlert(" Logged in Successfully", "success")
+            navigate("/");
         } else props.showAlert(" Invalid details", "danger")
     }
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
     return (
-        <div className='container'>
+        <div className='container mt-3'>
+            <h2>Login to continue to iNotebook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
