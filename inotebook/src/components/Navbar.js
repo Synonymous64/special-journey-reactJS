@@ -43,7 +43,11 @@ const Navbar = () => {
           {!localStorage.getItem('token') ? <form className="d-flex" role="search">
             <Link to="/login" className="btn btn-outline-info mx-1">Login</Link>
             <Link to="/signup" className="btn btn-outline-success mx-1">Sign up</Link>
-          </form> : <button type="button" onClick={handleLogout} className="btn btn-outline-success">Logout</button>}
+          </form> : <>
+            <Link to="/userInfo" className="mx-4 border-4 rounded-circle border-success"><i class="fa-solid fa-user"></i></Link>
+            <button type="button" onClick={handleLogout} className="btn btn-outline-success mx-1">Logout</button>
+          </>
+          }
         </div>
       </div>
     </nav>
