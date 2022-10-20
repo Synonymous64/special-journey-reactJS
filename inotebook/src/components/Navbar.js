@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link to="/login" className="btn btn-outline-info mx-1">Login</Link>
             <Link to="/signup" className="btn btn-outline-success mx-1">Sign up</Link>
           </form> : <>
-            <Link to="/userInfo" className="mx-4 border-4 rounded-circle border-success"><i class="fa-solid fa-user"></i></Link>
+            <Link to="/userInfo" className="mx-4 border-4 rounded-circle border-success"><i className="fa-solid fa-user"></i></Link>
             <button type="button" onClick={handleLogout} className="btn btn-outline-success mx-1">Logout</button>
           </>
           }
