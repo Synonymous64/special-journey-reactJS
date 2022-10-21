@@ -48,7 +48,7 @@ const UserInfo = () => {
                         disabled readOnly></textarea>
                 </div>
             </form>
-        </div >
+        </div>
     )
 }
 
