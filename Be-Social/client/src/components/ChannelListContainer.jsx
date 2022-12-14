@@ -12,7 +12,7 @@ const SideBar = ({ logout }) => (
         <div className='channel-list__sidebar__icon1'>
             <div className='icon1__inner'>
                 {/* <img src={HostpitalIcon} alt="socialIcon" width="30" /> */}
-                <SlSocialBehance />
+                <SlSocialBehance onClick={() => window.location.reload()} style={{ cursor: 'pointer' }} />
             </div>
         </div>
         <div className='channel-list__sidebar__icon2'>
@@ -28,7 +28,7 @@ const CompanyHeader = () => (
         <p className='channel-list__header__text'>BE-SOCIAL</p>
     </div>
 )
-const ChannelListContainer = () => {
+const ChannelListContainer = ({ isCreating, setIsCreating, setCreateType, setIsEditing }) => {
     const logout = () => {
         cookies.remove('token');
         cookies.remove('userId');
@@ -52,6 +52,10 @@ const ChannelListContainer = () => {
                         <TeamChannelList
                             {...listProps}
                             type='team'
+                            isCreating={isCreating}
+                            setIsCreating={setIsCreating}
+                            setCreateType={setCreateType}
+                            setIsEditing={setIsEditing}
                         />
                     )}
                     Preview={(previewProps) => (
@@ -68,6 +72,10 @@ const ChannelListContainer = () => {
                         <TeamChannelList
                             {...listProps}
                             type='messaging'
+                            isCreating={isCreating}
+                            setIsCreating={setIsCreating}
+                            setCreateType={setCreateType}
+                            setIsEditing={setIsEditing}
                         />
                     )}
                     Preview={(previewProps) => (

@@ -30,7 +30,7 @@ const ChannelContainer = (
                 This is the beginning of your chat history.
             </p>
             <p className="channel-empty__first" style={{ color: 'white' }}>
-                Send messages, attachments, links, emojis and more...
+                Send messages, attachments, links, emojis and many more...
             </p>
         </div>
     )
