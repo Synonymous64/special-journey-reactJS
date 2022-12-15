@@ -1,6 +1,6 @@
 import React from 'react'
 import { AddChannel } from '../assets'
-const TeamChannelList = ({ children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing }) => {
+const TeamChannelList = ({ children, error = false, loading, type, isCreating, setIsCreating, setCreateType, setIsEditing, setToggleContainer }) => {
     if (error) return type === 'team' ? (
         <div className='team-channel-list'>
             <p className='team-channel-list__message'>
@@ -29,6 +29,7 @@ const TeamChannelList = ({ children, error = false, loading, type, isCreating, s
                     setCreateType={setCreateType}
                     setIsEditing={setIsEditing}
                     type={type === 'team' ? 'team' : 'messaging'}
+                    setToggleContainer={setToggleContainer}
                 />
             </div>
             {children}
