@@ -6,7 +6,6 @@ import News from "./components/News";
 import LoadingBar from "react-top-loading-bar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-require('dotenv').config();
 const apiKey = process.env.REACT_APP_NEWS_API;
 const App = () => {
   const pageSize = 5;
